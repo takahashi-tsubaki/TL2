@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <cassert>
 //#include <Windows.h>
-#include "DirectXTex.h"
+
 #include "TextureConverter.h"
 
 enum Argument
