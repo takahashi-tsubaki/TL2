@@ -15,7 +15,7 @@ void TextureConverter::LoadWICTextureFromFile(const std::string& filepath)
 {
 	std::wstring wfilePath = ConvertMultiByteStringToWideString(filepath);
 
-	result = LoadFromWICFile(wfilePath.c_str(), WIC_FLAGS_NONE, &metadeta_, scratchImage_);
+	HRESULT result = LoadFromWICFile(wfilePath.c_str(), WIC_FLAGS_NONE, &metadeta_, scratchImage_);
 	assert(SUCCEEDED(result));
 
 	//
