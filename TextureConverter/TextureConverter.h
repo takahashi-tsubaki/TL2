@@ -23,7 +23,7 @@ private:
 	//画像のイメージコンテナ
 	DirectX::ScratchImage scratchImage_;
 
-	HRESULT result;
+	;
 
 	std::wstring directoryPath_;
 
