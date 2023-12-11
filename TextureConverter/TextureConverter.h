@@ -1,34 +1,50 @@
 #pragma once
+#include <DirectXTex.h>
 #include <string>
-#include <windows.h>
-#include "DirectXTex.h"
-class TextureConverter
-{
+
+class TextureConverter {
 public:
-	///
-	//ファイルパスをDDSに変換する
-	void CovertTextureWICToDDS(const std::string& filepath);
+	/// <summary>
+	/// テクスチャをWICからDDSに変換する
+	/// </summary>
+	/// <param name = "fliePath">ファイルパス</param>
+	void ConverterTextureWICToDDS(
+	    const std::string& filePath, int32_t numOptions = 0, char* options[] = nullptr);
 
-	void LoadWICTextureFromFile(const std::string& filepath);
+	/// <summary>
+	/// パスとファイル名を分離する
+	/// </summary>
+	/// <param name="filePath">ファイルパス</param>
+	void SeparateFilePath(const std::wstring& filePath);
 
-	void SeparateFilePath(const std::wstring& filepath);
-	void SaveDDSTextureToFile();
+	/// <summary>
+	/// テクスチャファイル読み込み
+	/// </summary>
+	/// <param name = "fliePath">ファイルパス</param>
+	void LoadWICTextureFromFile(const std::string& filePath);
+
+	static std::wstring ConvertMultiByteStringToWideString(const std::string& String);
+
+	/// <summary>
+	/// DDSテクスチャとしてファイル書き出し
+	/// </summary>
+	void SaveDDSTextureToFile(int32_t numOptions, char* options[]);
+
+	/// <summary>
+	/// 使用方法を出力(表示)する
+	/// </summary>
+	static void OutputUsage();
 
 private:
-
-	static std::wstring ConvertMultiByteStringToWideString(const std::string& mstring);
-
-	//画像の情報
-	DirectX::TexMetadata metadeta_;
-	//画像のイメージコンテナ
+	// 画像の情報
+	DirectX::TexMetadata metadata_;
+	// 画像のイメージのコンテナ
 	DirectX::ScratchImage scratchImage_;
 
-	;
-
+	// ディレクトリパス
 	std::wstring directoryPath_;
-
+	// ファイル名
 	std::wstring fileName_;
-
+	// ファイル拡張子
 	std::wstring fileExt_;
 };
-
